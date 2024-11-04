@@ -7,12 +7,12 @@ app.use(express.json());
 app.post('/getLevel', async (req, res) => {
     const userAgent = req.headers['user-agent'] || '';
     
-    // Ensure the User-Agent starts with 'Roblox' or 'RobloxStudio'
+    // user-agent has to start with 'Roblox' or 'RobloxStudio'
     if (!userAgent.startsWith('Roblox') && !userAgent.startsWith('RobloxStudio')) {
         return res.status(403).send('Forbidden: Invalid User-Agent');
     }
     
-    // Set up the data for the Geometry Dash API request
+    // set up data
     const { levelID } = req.body;
     if (!levelID) return res.status(400).send('Missing levelID');
 
@@ -27,14 +27,14 @@ app.post('/getLevel', async (req, res) => {
             }
         });
 
-        res.send(gdResponse.data);  // Send back the response to Roblox
+        res.send(gdResponse.data);  // send back to Roblox
     } catch (error) {
         console.error('Error contacting Geometry Dash servers:', error);
         res.status(500).send('Error fetching level data');
     }
 });
 
-// Set the port for Render.com
+// set the port for render
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
