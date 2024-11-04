@@ -1,0 +1,16 @@
+{
+  "name": "rblxgd",
+  "version": "0.1.0",
+  "description": "Simple proxy to bridge over Roblox's HttpService and Geometry Dash's servers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "axios": "^0.21.1"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
